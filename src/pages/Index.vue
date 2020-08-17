@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <img src="../assets/nagano.jpg" />
+      <img class="index__image--nagano" src="../assets/nagano.jpg" />
     </header>
     <hr />
     <h2>ルーム一覧</h2>
@@ -36,3 +36,10 @@ export default {
   },
 };
 </script>
+
+<style>
+img.index__image--nagano {
+  max-width: 100%;
+  height: auto;
+}
+</style>
