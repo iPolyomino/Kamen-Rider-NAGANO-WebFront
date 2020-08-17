@@ -1,22 +1,31 @@
 <template>
-  <div>
-    <router-link :to="id.toString()">
-      <h3>{{ name }}</h3>
-    </router-link>
+  <div class="card">
+    <h3>{{ title }}</h3>
+    <article>{{ text }}</article>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    name: {
-      default: "room name",
+    title: {
+      default: "title",
       type: String,
     },
-    id: {
-      default: 0,
-      type: Number,
+    text: {
+      default: "text",
+      type: String,
     },
   },
 };
 </script>
+
+<style>
+div.card {
+  border: 1px outset;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  margin: 8px auto;
+}
+</style>
