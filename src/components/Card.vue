@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h3>{{ name }}</h3>
+    <router-link :to="id.toString()">
+      <h3>{{ name }}</h3>
+    </router-link>
   </div>
 </template>
 
