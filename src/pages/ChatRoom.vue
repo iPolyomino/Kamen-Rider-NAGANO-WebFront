@@ -12,24 +12,19 @@
 </template>
 
 <script>
-import Comment from "../components/Comment";
-import Room from "../components/Room";
+import { mapGetters } from "vuex";
 import Card from "../components/Card.vue";
 
 export default {
   components: {
     Card,
   },
-  created: function () {
-    // fetch data
+  computed: {
+    ...mapGetters(["room"]),
   },
-  data: function () {
-    // dummy data
-    const comment = new Comment("Hagi", "hello", "");
-    const room = new Room(0, "Kamen-Rider", [comment]);
-    return {
-      room,
-    };
+  created() {
+    this.$store.dispatch("fetchRooms");
+    this.$store.dispatch("fetchRoom", { id: this.$route.params.id });
   },
 };
 </script>
