@@ -1,8 +1,10 @@
+import Comment from "./Comment";
+
 class Room {
-  constructor(id, name, comments) {
+  constructor({ id, name, comments }) {
     this.id = id;
     this.name = name;
-    this.comments = comments;
+    this.comments = comments.map((comment) => new Comment(comment));
   }
 }
 

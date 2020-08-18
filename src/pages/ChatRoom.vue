@@ -23,7 +23,6 @@ export default {
     ...mapGetters(["room"]),
   },
   created() {
-    this.$store.dispatch("fetchRooms");
     this.$store.dispatch("fetchRoom", { id: this.$route.params.id });
   },
 };

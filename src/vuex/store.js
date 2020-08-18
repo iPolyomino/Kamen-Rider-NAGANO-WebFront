@@ -1,8 +1,10 @@
+import axios from "axios";
 import Vue from "vue";
 import Vuex from "vuex";
 
-import Comment from "../components/Comment";
 import Room from "../components/Room";
+
+const API_SERVER = "http://localhost:3000";
 
 Vue.use(Vuex);
 
@@ -24,16 +26,19 @@ const vuexStore = {
     },
   },
   actions: {
-    fetchRoom({ commit }, { id }) {
-      const room = this.state.rooms[id];
+    async fetchRoom({ commit }, { id }) {
+      const roomData = await axios
+        .get(`${API_SERVER}/room/${id}`)
+        .then((result) => result.data);
+      const room = new Room(roomData);
+
       commit("setRoom", { room });
     },
-    fetchRooms({ commit }) {
-      // dummy data
-      const comment = new Comment("Hagi", "hello", "");
-      const room1 = new Room(0, "Kamen-Rider", [comment]);
-      const room2 = new Room(1, "Nagano", []);
-      const rooms = [room1, room2];
+    async fetchRooms({ commit }) {
+      const rooms = await axios
+        .get(`${API_SERVER}/room`)
+        .then((result) => result.data)
+        .then((rooms) => rooms.map((room) => new Room(room)));
 
       commit("setRooms", { rooms });
     },
