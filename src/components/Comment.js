@@ -1,8 +1,8 @@
 class Comment {
-  constructor(sender, text, imageURL) {
+  constructor({ sender, text, image_url }) {
     this.sender = sender;
     this.text = text;
-    this.imageURL = imageURL;
+    this.imageURL = image_url;
   }
 }
 

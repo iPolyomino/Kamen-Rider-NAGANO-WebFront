@@ -17,22 +17,19 @@
 </template>
 
 <script>
-import Comment from "../components/Comment";
-import Room from "../components/Room";
+import { mapGetters } from "vuex";
+
 import Card from "../components/Card.vue";
 
 export default {
   components: {
     Card,
   },
-  data: function () {
-    // dummy data
-    const comment = new Comment("Hagi", "hello", "");
-    const room1 = new Room(0, "Kamen-Rider", [comment]);
-    const room2 = new Room(1, "Nagano", []);
-    return {
-      rooms: [room1, room2],
-    };
+  computed: {
+    ...mapGetters(["rooms"]),
+  },
+  created() {
+    this.$store.dispatch("fetchRooms");
   },
 };
 </script>
